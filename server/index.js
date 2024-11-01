@@ -30,8 +30,12 @@ const connectDb = async () => {
 connectDb();
 
 app.get("/", async (req, res) => {
-  const post = await db.collection("posts").find().toArray();
-  res.json(post);
+  try {
+    const post = await db.collection("posts").find().toArray();
+    res.json(post);
+  } catch (err) {
+    req.json(err);
+  }
 });
 
 app.get("/post/:id", async (req, res) => {
