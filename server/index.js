@@ -34,7 +34,7 @@ app.get("/", async (req, res) => {
     const post = await db.collection("posts").find().toArray();
     res.json(post);
   } catch (err) {
-    req.json(err);
+    req.json(err.message);
   }
 });
 
@@ -76,7 +76,7 @@ app.post("/signup", async (req, res) => {
     });
     res.json(user);
   } catch (err) {
-    res.json(err);
+    res.json(err.message);
   }
 });
 
@@ -93,7 +93,7 @@ app.post("/login", async (req, res) => {
       ? res.json(user[0])
       : res.json({ comment: "password is wrong" });
   } catch (err) {
-    res.json(err);
+    res.json(err.message);
   }
 });
 
