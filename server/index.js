@@ -34,7 +34,7 @@ app.get("/", async (req, res) => {
     const post = await db.collection("posts").find().toArray();
     res.json(post);
   } catch (err) {
-    req.json(err.message);
+    res.json(err.message);
   }
 });
 
